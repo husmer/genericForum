@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <title>Forum</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container_wrapper">
+        <div class="container_content_categories">
+          {{range $cat := .CategoryChoice}}
+          <form class="container_content_categories_form" action="/" method="post">
+              <label for={{$cat.Category}}>
+                <input type="hidden" name="postId" value={{$cat.Category}} />
+                {{if eq $cat.Selected "true"}}
+                <input  class="container_form_activated" type="submit" name="Category" value={{$cat.Category}} />
+                {{else}}
+                <input  class="container_form_deactivated" type="submit" name="Category" value={{$cat.Category}} />
+                {{end}}
+              </label>
+          </form>
+          {{end}}
+        </div>
+        <div class="container_menu">
+          <a class="container_menu_button" href="/">
+            <span>Forum</span>
+          </a>
+          {{if eq .Access.AccessRight "1" }}
+          <a class="container_menu_button" href="/login">
+            <span>Login</span>
+          </a>
+          <a class="container_menu_button" href="/register">
+            <span>Register</span>
+          </a>
+          {{else if eq .Access.AccessRight "2"}}
+          <a class="container_menu_button" href="/logout">
+            <span>Logout</span>
+          </a>
+  
+          <a class="container_menu_button" href="/post">
+            <span>Create Post</span>
+          </a>
+          {{end}}
+          <span class="container_menu_button"> {{.User.Username}} </span>
+        </div>
+      </div>
+      
+      <div class="container_content">
+        {{range $item := .AllPosts}}
+        <a
+          class="container_content_post-link"
+          href="/postcontent?PostId={{$item.Id}}"
+        >
+          {{if eq $item.User $.User.Id}}
+            <div class="container_content_post-link_container" style="background-color: black; color: azure;">
+          {{else}}
+            <div class="container_content_post-link_container">
+          {{end}}
+            <span> {{$item.Title}} </span>
+            <span> posted by {{$item.Username}} </span>
+            <span> {{$item.Created}} ago </span>
+          {{if eq $.Access.AccessRight "2" }}
+          <form action="/" method="post">
+            <label for="like">
+              <input type="hidden" name="postId" value="{{$item.Id}}" />
+              {{if eq $item.CurrUserRate "1"}}
+              <input style="border: 2px solid red;" type="submit" name="like" value="Like" />
+              {{else}}
+              <input style="border: 2px solid transparent;" type="submit" name="like" value="Like" />
+              {{end}}
+            </label>
+            <span>Rating: {{$item.LikeRating}}</span>
+            <label for="dislike">
+              <input type="hidden" name="postId" value="{{$item.Id}}" />
+              {{if eq $item.CurrUserRate "-1"}}
+              <input style="border: 2px solid red;" type="submit" name="dislike" value="Dislike" />
+              {{else}}
+              <input style="border: 2px solid transparent;" type="submit" name="dislike" value="Dislike" />
+               {{end}}
+            </label>
+          </form>
+          {{end}}
+          </div>
+        </a>
+        {{end}}
+      </div>
+    </div>
+  </body>
+</html>

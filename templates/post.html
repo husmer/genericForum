@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <title>Forum</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container_menu">
+        <a class="container_menu_button" href="/">
+          <span>Forum</span>
+        </a>
+        {{if eq .Access.AccessRight "1" }}
+        <a class="container_menu_button" href="/login">
+          <span>Login</span>
+        </a>
+        <a class="container_menu_button" href="/register">
+          <span>Register</span>
+        </a>
+        {{else if eq .Access.AccessRight "2"}}
+        <a class="container_menu_button" href="/logout">
+          <span>Logout</span>
+        </a>
+
+        <a class="container_menu_button" href="/post">
+          <span>Create Post</span>
+        </a>
+        {{end}}
+        <span class="container_menu_button"> 
+          {{.User.Username}} 
+        </span>
+      </div>
+      <div class="container_content">
+        <form method="post" action="/post" class="container_register">
+          <div class="container_register_categories">
+            {{range $item := .CategoryChoice}}
+            <label
+              class="container_register_categories_label"
+              for="{{$item.Id}}"
+            >
+              <p>{{$item.Category}}</p>
+              <input type="checkbox" name="{{$item.Id}}" />
+            </label>
+            {{end}}
+          </div>
+          <label for="title">
+            <span>Title</span>
+            <input type="text" name="title" />
+          </label>
+          <label for="message">
+            <span>Message</span>
+            <input type="text" name="message" />
+          </label>
+          <input type="submit" value="Submit" />
+          {{if .Errors}} 
+          {{range $err := .Errors}}
+            <p>{{$err}}</p>
+          {{end}} 
+          {{end}}
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
