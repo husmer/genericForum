@@ -32,29 +32,42 @@
           {{.User.Username}}
         </span>
       </div>
+      <a class="container_back" href="/">
+          <button id="back">Back to Forum</button>
+      </a>
       <div class="container_content">
         <div class="container_content_categories">
           <span>Post Categories: </span>
-          {{range $cat := .AllPosts}}
-          {{if $cat.Categories}}
-            {{range $singleCat := $cat.Categories}}
-              <p class="container_content_categories_item">{{$singleCat.Category}}</p>
+          <div class="container_content_categories_row">
+            {{range $cat := .AllPosts}}
+            {{if $cat.Categories}}
+              {{range $singleCat := $cat.Categories}}
+                <p class="container_content_categories_item">{{$singleCat.Category}}</p>
+              {{end}}
+              {{else}}
+              <p>None</p>
+              {{end}}
             {{end}}
-            {{else}}
-            <p>None</p>
+          </div>
+          <div class="container_content_categories_row">
+            {{$postItem := index .AllPosts 0}}
+            {{if $postItem.Media}}
+            <div class="container_content_categories_row_column">
+              <img style="height: 10rem; width: 10rem; border-radius: 0.5rem; margin: 0.5rem;" src="static/images/{{$postItem.Media}}" alt="picture">
+            </div>
             {{end}}
-          {{end}}
+            <div class="container_content_categories_row_column">
+              {{$item := index .AllPosts 0}}
+              <p>{{$item.User}}</p>
+              <p>{{$item.Title}}</p>
+              <p>{{$item.Post}}</p>
+              <p>{{$item.Created}}</p>
+            </div>
+          </div>
         </div>
-        <a href="/">
-            <button class="back-button">Back to forum</button>
-        </a>
-        {{$item := index .AllPosts 0}}
-        <p>{{$item.User}}</p>
-        <p>{{$item.Title}}</p>
-        <p>{{$item.Post}}</p>
-        <p>{{$item.Created}}</p>
         {{if eq .Access.AccessRight "2" }}
-        <form method="post" action="/postcontent?PostId={{$item.Id}}">
+        <form class="container_content_form" method="post" action="/postcontent?PostId={{$item.Id}}">
+            </label>
             <label for="createPostComment">
             <span>Create Comment</span>
             <input type="text" name="createPostComment" />
@@ -68,41 +81,48 @@
         {{end}} 
         {{end}}
         {{if .AllComments}}
-        {{range $item := .AllComments}}
-        <div class="container_content_post-link_container">
-          <span>{{$item.Comment}}</span>
-          <span>By {{$item.UserId}}</span>
-          <span>Created on: {{$item.Created}}</span>
-          
-          {{$postItem := index $.AllPosts 0}}
-          {{if eq $.Access.AccessRight "2" }}
-            <form action="/postcontent?PostId={{$postItem.Id}}" method="post">
-              <label for="like">
-                <input type="hidden" name="CommentId" value="{{$item.Id}}" />
-                {{if eq $item.CurrUserRate "1"}}
-                <input style="border: 2px solid red;" type="submit" name="like" value="Like" />
-                {{else}}
-                <input style="border: 2px solid transparent;" type="submit" name="like" value="Like" />
+        <div class="container_content_post-link">
+          {{range $item := .AllComments}}
+          <div class="container_content_post-link_container">
+            <div class="container_content_post-link_container_col_title">
+              <p>By {{$item.UserId}}</p>
+              <p>{{$item.Created}}</p>
+            </div>
+            <div class="container_content_post-link_container_col">
+              <p>{{$item.Comment}}</p>
+            </div>
+            {{$postItem := index $.AllPosts 0}}
+            {{if eq $.Access.AccessRight "2" }}
+            <div class="container_content_post-link_container_like">
+              <form action="/postcontent?PostId={{$postItem.Id}}" method="post">
+                <label for="like">
+                  <input type="hidden" name="CommentId" value="{{$item.Id}}" />
+                  {{if eq $item.CurrUserRate "1"}}
+                  <input style="border: 2px solid red;" type="submit" name="like" value="Like" />
+                  {{else}}
+                  <input style="border: 2px solid transparent;" type="submit" name="like" value="Like" />
+                  {{end}}
+                </label>
                 {{end}}
-              </label>
+                <span>Rating: {{$item.Likes}}</span>
+                {{if eq $.Access.AccessRight "2" }}
+                <label for="dislike">
+                  <input type="hidden" name="CommentId" value="{{$item.Id}}" />
+                  {{if eq $item.CurrUserRate "-1"}}
+                  <input style="border: 2px solid red;"  type="submit" name="dislike" value="Dislike" />
+                  {{else}}
+                  <input style="border: 2px solid transparent;" type="submit" name="dislike" value="Dislike" />
+                  {{end}}
+                </label>
+              </form>
+              </div>
               {{end}}
-              <span>Rating: {{$item.Likes}}</span>
-              {{if eq $.Access.AccessRight "2" }}
-              <label for="dislike">
-                <input type="hidden" name="CommentId" value="{{$item.Id}}" />
-                {{if eq $item.CurrUserRate "-1"}}
-                <input style="border: 2px solid red;"  type="submit" name="dislike" value="Dislike" />
-                {{else}}
-                <input style="border: 2px solid transparent;" type="submit" name="dislike" value="Dislike" />
-                {{end}}
-              </label>
-            </form>
-            {{end}}
+          </div>
+          {{end}}
         </div>
-        {{end}}
         
         {{else}}
-        <p>No comments yet, add one today!</p>
+        <p class="container_content_no-comments">No comments yet, add one today!</p>
         {{end}}
       </div>
     </div>

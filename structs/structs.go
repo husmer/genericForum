@@ -10,6 +10,7 @@ type Post struct {
 	LikeRating   string
 	CurrUserRate string
 	Categories   []Category
+	Media        string
 }
 
 type Category struct {

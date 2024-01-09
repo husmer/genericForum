@@ -28,12 +28,15 @@
           <span>Create Post</span>
         </a>
         {{end}}
-        <span class="container_menu_button"> 
-          {{.User.Username}} 
-        </span>
+        <span class="container_menu_button"> {{.User.Username}} </span>
       </div>
       <div class="container_content">
-        <form method="post" action="/post" class="container_register">
+        <form
+          method="post"
+          action="/post"
+          class="container_register"
+          enctype="multipart/form-data"
+        >
           <div class="container_register_categories">
             {{range $item := .CategoryChoice}}
             <label
@@ -53,12 +56,11 @@
             <span>Message</span>
             <input type="text" name="message" />
           </label>
+          <input type="file" name="img" id="img" accept="image/gif, image/jpeg, image/png" />
           <input type="submit" value="Submit" />
-          {{if .Errors}} 
-          {{range $err := .Errors}}
-            <p>{{$err}}</p>
-          {{end}} 
-          {{end}}
+          {{if .Errors}} {{range $err := .Errors}}
+          <p>{{$err}}</p>
+          {{end}} {{end}}
         </form>
       </div>
     </div>

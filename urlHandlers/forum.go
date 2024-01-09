@@ -7,6 +7,7 @@ import (
 	"html/template"
 	"net/http"
 	"strings"
+	"time"
 )
 
 func HandleForum(w http.ResponseWriter, r *http.Request) {
@@ -14,7 +15,6 @@ func HandleForum(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, "Template not found!"+err.Error(), http.StatusInternalServerError)
 	}
-
 	if r.URL.Path != "/" && r.URL.Path != "/register" && r.URL.Path != "/login" && r.URL.Path != "/logout" && r.URL.Path != "/post" && r.URL.Path != "/postcontent" && !strings.HasPrefix(r.URL.Path, "/postcontent?PostId=") {
 		http.Error(w, "Bad Request: 404", http.StatusNotFound)
 		return
@@ -39,10 +39,11 @@ func HandleForum(w http.ResponseWriter, r *http.Request) {
 		if executeCat != nil {
 			fmt.Println("Template error: ", executeCat)
 		}
+		return
 	}
 
-	userCurrLike := dbconnections.GetPostLike(m.User.Id, r.Form["postId"][0])
 	if r.Form["like"] != nil {
+		userCurrLike := dbconnections.GetPostLike(m.User.Id, r.Form["postId"][0])
 		if userCurrLike == "1" {
 			dbconnections.SetPostLikes(m.User.Id, r.Form["postId"][0], "0")
 		} else {
@@ -50,12 +51,51 @@ func HandleForum(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if r.Form["dislike"] != nil {
+		userCurrLike := dbconnections.GetPostLike(m.User.Id, r.Form["postId"][0])
 		if userCurrLike == "-1" {
 			dbconnections.SetPostLikes(m.User.Id, r.Form["postId"][0], "0")
 		} else {
 			dbconnections.SetPostLikes(m.User.Id, r.Form["postId"][0], "-1")
 		}
 	}
+
+	if r.Form["filter"] != nil {
+		if r.Form["filter"][0] == "Likes" {
+			for i := 0; i < len(m.AllPosts); i++ {
+				for j := 0; j < len(m.AllPosts); j++ {
+					if m.AllPosts[i].LikeRating > m.AllPosts[j].LikeRating {
+						m.AllPosts[i], m.AllPosts[j] = m.AllPosts[j], m.AllPosts[i]
+					}
+				}
+			}
+			m.CategoryChoice[0].Selected = "true"
+			executeErr := template.Execute(w, m)
+			if executeErr != nil {
+				fmt.Println("Template error: ", executeErr)
+			}
+			return
+		} else if r.Form["filter"][0] == "Dates" {
+			for i := 0; i < len(m.AllPosts); i++ {
+				for j := 0; j < len(m.AllPosts); j++ {
+					layout := "2006-01-02 15:04:05"
+					postDatei, _ := time.Parse(layout, m.AllPosts[i].Created)
+					postDatej, _ := time.Parse(layout, m.AllPosts[j].Created)
+					if time.Since(postDatei) > time.Since(postDatej) {
+						m.AllPosts[i], m.AllPosts[j] = m.AllPosts[j], m.AllPosts[i]
+					}
+				}
+			}
+			m.CategoryChoice[0].Selected = "true"
+			executeErr := template.Execute(w, m)
+			if executeErr != nil {
+				fmt.Println("Template error: ", executeErr)
+			}
+			return
+		} else {
+			fmt.Println("Nothing yet")
+		}
+	}
+
 	m = dbconnections.GetMegaDataValues(r, "Forum")
 	m.CategoryChoice[0].Selected = "true"
 
