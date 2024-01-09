@@ -30,39 +30,57 @@ body {
 }
 
 .container {
-  @include flexCol;
+  @include flexRow;
   height: 100vh;
   color: white;
-  &_wrapper {
-    @include flexRow;
-    width: 100%;
-  }
-  &_form{
+  &_categories {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin-right: auto;
-
-    &_activated {
-      border: 2px solid blue;
-      background: transparent;
-      color: white;
-      border-radius: 0.1rem;
-      margin: 0.25rem;
-      width: 5rem;
-      padding: 1rem;
-      box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
-      text-decoration: none;
+    &_content {
+      margin-left: 0.5rem;
+      margin: 0;
+      &_item{
+        margin: 0 0.3rem;
+      }
+      p{
+        margin:0 0.3rem;
+      }
     }
-    &_deactivated {
-      border: 2px solid red;
-      background: transparent;
-      color:white;
-      border-radius: 0.1rem;
-      margin: 0.25rem;
-      width: 5rem;
-      padding: 1rem;
-      box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
-      text-decoration: none;
+    &_form{
+      margin-right: auto;
+      margin-bottom: auto;
+      padding-bottom: 0.5rem;
+  
+      &_activated {
+        border: transparent;
+        background: transparent;
+        color: white;
+        border-radius: 0.1rem;
+        margin: 0.25rem;
+        width: 5rem;
+        padding: 1rem;
+        box-shadow: rgba(184, 158, 11, 0.8) 0px 5px 15px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      &_deactivated {
+        border: transparent;
+        background: transparent;
+        color:white;
+        border-radius: 0.1rem;
+        margin: 0.25rem;
+        width: 5rem;
+        padding: 1rem;
+        box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
+        text-decoration: none;
+        cursor: pointer;
+      }
     }
   }
+
   &_menu {
     @include flexRow;
     width: 100%;
@@ -103,33 +121,32 @@ body {
     margin: auto;
   }
   &_content {
-    margin-bottom: auto;
-    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    &_box {
+      width: 75vw;
+      margin-bottom: auto;
+    }
     &_post-link {
       all: unset;
       color: white;
       cursor: pointer;
       &_container {
-        @include flexRow;
+        display: flex;
+        flex-direction: row;
         justify-content: space-between;
         box-shadow: rgba(255, 255, 255, 0.664) 0px 2px 8px 0px;
         border: 1px solid white;
         padding: 0.5rem 1rem;
         margin: 3px;
-      }
-    }
-    &_categories {
-      @include flexCol;
-      flex: 1;
-      justify-content: left;
-      margin: 1rem 0;
-
-      &_item{
-        margin: 0 0.3rem;
-
-      }
-      p{
-        margin:0 0.3rem;
+        span{
+          min-width: fit-content;
+        }
       }
     }
   }

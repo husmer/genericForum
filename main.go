@@ -15,7 +15,7 @@ func main() {
 	database.Engine()
 	mux := http.NewServeMux()
 	server := &http.Server{
-		Addr:    ":8080",
+		Addr:    ":8000",
 		Handler: mux,
 	}
 	staticFiles := http.FileServer(http.Dir("./static"))
@@ -28,7 +28,7 @@ func main() {
 	mux.HandleFunc("/post", urlHandlers.HandlePost)
 	mux.HandleFunc("/postcontent", urlHandlers.HandlePostContent)
 
-	fmt.Println("Server hosted at: http://localhost:" + "8080")
+	fmt.Println("Server hosted at: http://localhost:" + "8000")
 	fmt.Println("To Kill Server press Ctrl+C")
 
 	err := server.ListenAndServe()

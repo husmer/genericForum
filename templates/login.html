@@ -23,16 +23,14 @@
         <a class="container_menu_button" href="/logout">
           <span>Logout</span>
         </a>
-        
+
         <a class="container_menu_button" href="/post">
           <span>Create Post</span>
         </a>
         {{end}}
-        <span class="container_menu_button">
-          {{.User.Username}}
-        </span>
+        <span class="container_menu_button"> {{.User.Username}} </span>
       </div>
-      <h1>Please login!</h1>
+      <p class="container_login-title">Please login!</p>
       <form method="post" action="/login" class="container_login">
         <label for="username">
           <span>Username</span>
@@ -45,11 +43,9 @@
         <input type="submit" value="Submit" />
       </form>
       <div class="container_errors">
-        {{if .Errors}} 
-        {{range $err := .Errors}}
-          <p>{{$err}}</p>
-        {{end}} 
-        {{end}}
+        {{if .Errors}} {{range $err := .Errors}}
+        <p>{{$err}}</p>
+        {{end}} {{end}}
       </div>
     </div>
   </body>
