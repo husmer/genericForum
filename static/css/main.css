@@ -148,6 +148,10 @@ body {
   padding: 0.5rem 1rem;
   margin: 3px;
   box-shadow: rgba(255, 255, 255, 0.664) 0px 2px 8px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Adjust the number of columns as needed */
+  grid-column-gap: 5px; /* Adjust the gap between columns as needed */
+  align-items: center;
 }
 .container_content_post-link_container_activated {
   display: flex;
@@ -157,9 +161,14 @@ body {
   padding: 0.5rem 1rem;
   margin: 3px;
   box-shadow: rgba(255, 255, 255, 0.664) 0px 2px 8px 0px, inset rgb(16, 126, 21) 0px 2px 8px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Adjust the number of columns as needed */
+  grid-column-gap: 5px; /* Adjust the gap between columns as needed */
+  align-items: center;
 }
 .container_content_post-link_container span {
-  min-width: fit-content;
+  margin: 0 5px;
+  word-break: break-word;
 }
 
 .opinion {

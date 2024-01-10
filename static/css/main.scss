@@ -160,11 +160,21 @@ body {
       cursor: pointer;
       &_container {
         @include activated($highlight: false);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr; /* Adjust the number of columns as needed */
+        grid-column-gap: 5px; /* Adjust the gap between columns as needed */
+        align-items: center;
+        
         &_activated {
           @include activated($highlight: true);
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr; /* Adjust the number of columns as needed */
+          grid-column-gap: 5px; /* Adjust the gap between columns as needed */
+          align-items: center;
         }
         span{
-          min-width: fit-content;
+          margin: 0 5px;
+          word-break: break-word;
         }
       }
     }
