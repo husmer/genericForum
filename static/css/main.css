@@ -52,7 +52,7 @@ body {
   margin: 0.25rem;
   width: 5rem;
   padding: 1rem;
-  box-shadow: rgba(184, 158, 11, 0.8) 0px 5px 15px;
+  box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -64,7 +64,7 @@ body {
   margin: 0.25rem;
   width: 5rem;
   padding: 1rem;
-  box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
+  box-shadow: rgba(53, 53, 53, 0.8) 0px 5px 15px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -151,4 +151,45 @@ body {
 }
 .container_content_post-link_container span {
   min-width: fit-content;
+}
+
+.opinion {
+  display: inline-block;
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+.opinion_like-button {
+  border: transparent;
+  background: transparent;
+  color: white;
+  border-radius: 0.1rem;
+  margin: 0.25rem;
+  box-shadow: rgba(53, 53, 53, 0.8) 0px 5px 15px;
+  text-decoration: none;
+}
+.opinion_like-button_activated {
+  border: transparent;
+  background: transparent;
+  color: white;
+  border-radius: 0.1rem;
+  margin: 0.25rem;
+  box-shadow: rgba(197, 137, 7, 0.568) 0px 5px 15px;
+  text-decoration: none;
+}
+.opinion_dislike-button {
+  border: transparent;
+  background: transparent;
+  color: white;
+  border-radius: 0.1rem;
+  margin: 0.25rem;
+  box-shadow: rgba(53, 53, 53, 0.8) 0px 5px 15px;
+  text-decoration: none;
+}
+.opinion_dislike-button_activated {
+  border: transparent;
+  background: transparent;
+  color: white;
+  border-radius: 0.1rem;
+  margin: 0.25rem;
+  box-shadow: rgba(211, 10, 10, 0.568) 0px 5px 15px;
+  text-decoration: none;
 }/*# sourceMappingURL=main.css.map */

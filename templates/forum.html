@@ -61,21 +61,21 @@
               <span> {{$item.Created}} ago </span>
             {{if eq $.Access.AccessRight "2" }}
             <form action="/" method="post">
-              <label for="like">
+              <label for="like" class="opinion">
                 <input type="hidden" name="postId" value="{{$item.Id}}" />
                 {{if eq $item.CurrUserRate "1"}}
-                <input style="border: 2px solid red;" type="submit" name="like" value="Like" />
+                <input class="opinion_like-button_activated" type="submit" name="like" value="Like" />
                 {{else}}
-                <input style="border: 2px solid transparent;" type="submit" name="like" value="Like" />
+                <input class="opinion_like-button" type="submit" name="like" value="Like" />
                 {{end}}
               </label>
               <span>Rating: {{$item.LikeRating}}</span>
-              <label for="dislike">
+              <label for="dislike" class="opinion">
                 <input type="hidden" name="postId" value="{{$item.Id}}" />
                 {{if eq $item.CurrUserRate "-1"}}
-                <input style="border: 2px solid red;" type="submit" name="dislike" value="Dislike" />
+                <input class="opinion_dislike-button_activated" type="submit" name="dislike" value="Dislike" />
                 {{else}}
-                <input style="border: 2px solid transparent;" type="submit" name="dislike" value="Dislike" />
+                <input class="opinion_dislike-button" type="submit" name="dislike" value="Dislike" />
                  {{end}}
               </label>
             </form>
