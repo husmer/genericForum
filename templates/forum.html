@@ -52,13 +52,13 @@
             href="/postcontent?PostId={{$item.Id}}"
           >
             {{if eq $item.User $.User.Id}}
-              <div class="container_content_post-link_container" style="background-color: black; color: azure;">
+              <div class="container_content_post-link_container_activated">
             {{else}}
               <div class="container_content_post-link_container">
             {{end}}
               <span> {{$item.Title}} </span>
               <span> posted by {{$item.Username}} </span>
-              <span> {{$item.Created}} ago </span>
+              <span> {{$item.Created}} </span>
             {{if eq $.Access.AccessRight "2" }}
             <form action="/" method="post">
               <label for="like" class="opinion">

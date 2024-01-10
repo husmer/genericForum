@@ -144,10 +144,19 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  box-shadow: rgba(255, 255, 255, 0.664) 0px 2px 8px 0px;
   border: 1px solid white;
   padding: 0.5rem 1rem;
   margin: 3px;
+  box-shadow: rgba(255, 255, 255, 0.664) 0px 2px 8px 0px;
+}
+.container_content_post-link_container_activated {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  margin: 3px;
+  box-shadow: rgba(255, 255, 255, 0.664) 0px 2px 8px 0px, inset rgb(16, 126, 21) 0px 2px 8px 0px;
 }
 .container_content_post-link_container span {
   min-width: fit-content;
