@@ -5,9 +5,9 @@ import (
 	"html/template"
 	"net/http"
 
-	"forum/cleanData"
-	"forum/dbconnections"
-	"forum/validateData"
+	"genericforum/cleanData"
+	"genericforum/dbconnections"
+	"genericforum/validateData"
 )
 
 func HandleRegister(w http.ResponseWriter, r *http.Request) {

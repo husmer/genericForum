@@ -2,9 +2,9 @@ package urlHandlers
 
 import (
 	"fmt"
-	"forum/cleanData"
-	"forum/dbconnections"
-	"forum/validateData"
+	"genericforum/cleanData"
+	"genericforum/dbconnections"
+	"genericforum/validateData"
 	"html/template"
 	"net/http"
 	"time"

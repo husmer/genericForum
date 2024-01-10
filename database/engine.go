@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"forum/dbconnections"
+	"genericforum/dbconnections"
 )
 
 func fileExists(filename string) bool {

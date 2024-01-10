@@ -1,7 +1,7 @@
 package urlHandlers
 
 import (
-	"forum/dbconnections"
+	"genericforum/dbconnections"
 	"net/http"
 	"time"
 )

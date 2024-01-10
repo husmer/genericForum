@@ -2,7 +2,7 @@ package urlHandlers
 
 import (
 	"fmt"
-	"forum/dbconnections"
+	"genericforum/dbconnections"
 	"html/template"
 	"net/http"
 )

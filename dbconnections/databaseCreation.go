@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"forum/validateData"
+	"genericforum/validateData"
 )
 
 func CreateDB() {

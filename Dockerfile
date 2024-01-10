@@ -1,6 +1,6 @@
 FROM golang:1.21
 
-WORKDIR /root
+WORKDIR /go/src/genericforum
 
 COPY go.mod ./
 
@@ -10,6 +10,6 @@ COPY . ./
 
 RUN go build -o main
 
-EXPOSE 8080
+EXPOSE 8000
 
 CMD ["./main"]

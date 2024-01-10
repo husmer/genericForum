@@ -3,9 +3,9 @@ package dbconnections
 import (
 	"database/sql"
 	"fmt"
-	"forum/helpers"
-	"forum/structs"
-	"forum/validateData"
+	"genericforum/helpers"
+	"genericforum/structs"
+	"genericforum/validateData"
 	"net/http"
 	"net/url"
 	"time"

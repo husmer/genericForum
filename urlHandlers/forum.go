@@ -2,8 +2,8 @@ package urlHandlers
 
 import (
 	"fmt"
-	"forum/dbconnections"
-	"forum/helpers"
+	"genericforum/dbconnections"
+	"genericforum/helpers"
 	"html/template"
 	"net/http"
 	"strings"
