@@ -153,6 +153,7 @@ body {
     width: 100vw;
     height: 100vh;
     margin: auto;
+    color: white;
     &_box {
       width: 75vw;
       margin-bottom: auto;
@@ -302,6 +303,27 @@ input[type="password"]
     padding: 1rem;
     box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
     text-decoration: none;
-    cursor: pointer;
+    cursor: text;
+  }
+}
+
+// comments
+.container_postContent {
+  &_categories {
+    &_row {
+      @include flexRow()
+    }
+    &_item {
+      margin-right: 0.3rem;
+    }
+  }
+
+  &_comment {
+    @include activated($highlight: false);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Adjust the number of columns as needed */
+    grid-column-gap: 1rem; /* Adjust the gap between columns as needed */
+    align-items: center;
+    width: 50vw;
   }
 }

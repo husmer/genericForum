@@ -134,6 +134,7 @@ body {
   width: 100vw;
   height: 100vh;
   margin: auto;
+  color: white;
 }
 .container_content_box {
   width: 75vw;
@@ -286,5 +287,29 @@ input[type=password] {
   padding: 1rem;
   box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
   text-decoration: none;
-  cursor: pointer;
+  cursor: text;
+}
+
+.container_postContent_categories_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.container_postContent_categories_item {
+  margin-right: 0.3rem;
+}
+.container_postContent_comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  margin: 3px;
+  box-shadow: rgba(255, 255, 255, 0.664) 0px 2px 8px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Adjust the number of columns as needed */
+  grid-column-gap: 1rem; /* Adjust the gap between columns as needed */
+  align-items: center;
+  width: 50vw;
 }/*# sourceMappingURL=main.css.map */

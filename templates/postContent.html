@@ -7,7 +7,7 @@
     <title>Forum</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container_login">
       <div class="container_menu">
         <a class="container_menu_button" href="/">
           <span>Forum</span>
@@ -32,24 +32,22 @@
           {{.User.Username}}
         </span>
       </div>
-      <a class="container_back" href="/">
-          <button id="back">Back to Forum</button>
-      </a>
       <div class="container_content">
-        <div class="container_content_categories">
-          <span>Post Categories: </span>
-          <div class="container_content_categories_row">
+        <div class="container_postContent_categories">
+
+          <div class="container_postContent_categories_row">
+            <span>Post Categories: </span>
             {{range $cat := .AllPosts}}
             {{if $cat.Categories}}
               {{range $singleCat := $cat.Categories}}
-                <p class="container_content_categories_item">{{$singleCat.Category}}</p>
+                <p class="container_postContent_categories_item">{{$singleCat.Category}}</p>
               {{end}}
               {{else}}
               <p>None</p>
               {{end}}
             {{end}}
           </div>
-          <div class="container_content_categories_row">
+          <div class="container_postContent_categories_row">
             {{$postItem := index .AllPosts 0}}
             {{if $postItem.Media}}
             <div class="container_content_categories_row_column">
@@ -58,10 +56,10 @@
             {{end}}
             <div class="container_content_categories_row_column">
               {{$item := index .AllPosts 0}}
-              <p>{{$item.User}}</p>
-              <p>{{$item.Title}}</p>
-              <p>{{$item.Post}}</p>
-              <p>{{$item.Created}}</p>
+              <p>User: {{$item.User}}</p>
+              <p>Title: {{$item.Title}}</p>
+              <p>Post: {{$item.Post}}</p>
+              <p>Created on: {{$item.Created}}</p>
             </div>
           </div>
         </div>
@@ -70,7 +68,7 @@
             </label>
             <label for="createPostComment">
             <span>Create Comment</span>
-            <input type="text" name="createPostComment" />
+            <input class="container_createPost_title" type="text" name="createPostComment" />
             </label>
             <input type="submit" value="Submit" />
         </form>
@@ -81,9 +79,9 @@
         {{end}} 
         {{end}}
         {{if .AllComments}}
-        <div class="container_content_post-link">
+        <div class="container_postContent">
           {{range $item := .AllComments}}
-          <div class="container_content_post-link_container">
+          <div class="container_postContent_comment">
             <div class="container_content_post-link_container_col_title">
               <p>By {{$item.UserId}}</p>
               <p>{{$item.Created}}</p>
@@ -93,29 +91,29 @@
             </div>
             {{$postItem := index $.AllPosts 0}}
             {{if eq $.Access.AccessRight "2" }}
-            <div class="container_content_post-link_container_like">
+
               <form action="/postcontent?PostId={{$postItem.Id}}" method="post">
-                <label for="like">
+                <label for="like" class="opinion">
                   <input type="hidden" name="CommentId" value="{{$item.Id}}" />
                   {{if eq $item.CurrUserRate "1"}}
-                  <input style="border: 2px solid red;" type="submit" name="like" value="Like" />
+                  <input class="opinion_like-button_activated" type="submit" name="like" value="Like" />
                   {{else}}
-                  <input style="border: 2px solid transparent;" type="submit" name="like" value="Like" />
+                  <input class="opinion_like-button" type="submit" name="like" value="Like" />
                   {{end}}
                 </label>
                 {{end}}
                 <span>Rating: {{$item.Likes}}</span>
                 {{if eq $.Access.AccessRight "2" }}
-                <label for="dislike">
+                <label for="dislike" class="opinion">
                   <input type="hidden" name="CommentId" value="{{$item.Id}}" />
                   {{if eq $item.CurrUserRate "-1"}}
-                  <input style="border: 2px solid red;"  type="submit" name="dislike" value="Dislike" />
+                  <input class="opinion_dislike-button_activated"  type="submit" name="dislike" value="Dislike" />
                   {{else}}
-                  <input style="border: 2px solid transparent;" type="submit" name="dislike" value="Dislike" />
+                  <input class="opinion_dislike-button" type="submit" name="dislike" value="Dislike" />
                   {{end}}
                 </label>
               </form>
-              </div>
+
               {{end}}
           </div>
           {{end}}
