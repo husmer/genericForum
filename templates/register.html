@@ -7,7 +7,7 @@
     <title>Forum</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container_login">
       <div class="container_menu">
         <a class="container_menu_button" href="/">
           <span>Forum</span>
@@ -32,30 +32,33 @@
           {{.User.Username}}
         </span>
       </div>
-      <form method="post" action="/register" class="container_register">
+      <form method="post" action="/register" class="container_login_screen">
         <label for="username">
           <span>Username</span>
-          <input type="text" name="username" id="username" />
+          <input class="container_login_input" type="text" name="username" id="username" />
         </label>
         <label for="email">
           <span>Email</span>
-          <input type="email" name="email" id="email" />
+          <input class="container_login_input" type="email" name="email" id="email" />
         </label>
         <label for="password1">
           <span>Password</span>
-          <input type="password" name="password1" id="password1" />
+          <input class="container_login_input" type="password" name="password1" id="password1" />
         </label>
         <label for="password2">
           <span>Repeat Password</span>
-          <input type="password" name="password2" id="password2" />
+          <input class="container_login_input" type="password" name="password2" id="password2" />
         </label>
-        <input type="submit" value="Submit" />
+        <input class="container_login_submit" type="submit" value="Submit" />
       </form>
-      {{if .Errors}} 
-      {{range $err := .Errors}}
-      <p>{{$err}}</p>
-      {{end}} 
-      {{end}}
+      <div class="container_errors">
+        {{if .Errors}} 
+        {{range $err := .Errors}}
+        <p>{{$err}}</p>
+        {{end}} 
+        {{end}}
+      </div>
+
     </div>
   </body>
 </html>

@@ -7,7 +7,7 @@
     <title>Forum</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container_login">
       <div class="container_menu">
         <a class="container_menu_button" href="/">
           <span>Forum</span>
@@ -50,14 +50,14 @@
           </div>
           <label for="title">
             <span>Title</span>
-            <input type="text" name="title" />
+            <input class="container_createPost_title" type="text" name="title" />
           </label>
           <label for="message">
             <span>Message</span>
-            <input type="text" name="message" />
+            <input class="container_createPost_title" type="text" name="message" />
           </label>
           <input type="file" name="img" id="img" accept="image/gif, image/jpeg, image/png" />
-          <input type="submit" value="Submit" />
+          <input class="container_login_submit" type="submit" value="Submit" />
           {{if .Errors}} {{range $err := .Errors}}
           <p>{{$err}}</p>
           {{end}} {{end}}

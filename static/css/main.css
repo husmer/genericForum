@@ -101,6 +101,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: auto;
   margin-bottom: auto;
 }
 .container_register label {
@@ -108,15 +109,18 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
+  margin: 0.5rem;
 }
 .container_register_categories {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 .container_register_categories_label {
-  margin: 0.5rem;
+  margin: 1rem;
 }
 .container_errors {
   color: white;
@@ -180,14 +184,14 @@ body {
 .container_login_screen {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   color: white;
 }
 .container_login_screen label {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: left;
   align-items: center;
   margin-bottom: 0.2rem;
 }
@@ -214,7 +218,7 @@ body {
   margin: 0.25rem;
   font-size: 1rem;
   width: 4rem;
-  height: auto;
+  height: 2rem;
   box-shadow: rgba(53, 53, 53, 0.8) 0px 5px 15px;
   text-decoration: none;
   cursor: pointer;
@@ -267,4 +271,20 @@ input[type=password] {
   margin: 0.25rem;
   box-shadow: rgba(211, 10, 10, 0.568) 0px 5px 15px;
   text-decoration: none;
+}
+
+.container_createPost {
+  color: white;
+}
+.container_createPost_title {
+  border: transparent;
+  background: transparent;
+  color: white;
+  border-radius: 0.1rem;
+  margin: 0.5rem;
+  width: 20rem;
+  padding: 1rem;
+  box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
+  text-decoration: none;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */
