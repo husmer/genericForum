@@ -181,6 +181,59 @@ body {
   }
 }
 
+// login screen
+.container_login {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  min-height: 100vh;
+    &_screen {
+      @include flexCol;
+      color: white;
+      label {
+        @include flexRow;
+        margin-bottom: 0.2rem;
+      }
+
+      span {
+        margin-right: 0.5rem;
+      }
+    }
+    &_input {
+      border: transparent;
+      background: transparent;
+      color:white;
+      border-radius: 0.1rem;
+      margin: 0.5rem;
+      width: 10rem;
+      padding: 1rem;
+      box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    &_submit {
+      border: transparent;
+      background: transparent;
+      color:white;
+      border-radius: 0.1rem;
+      margin: 0.25rem;
+      font-size: 1rem;
+      width: 4rem;
+      height:auto;
+      box-shadow: rgba(53, 53, 53, 0.8) 0px 5px 15px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+}
+
+input[type="text"]
+{
+    font-size:1rem;
+}
+input[type="password"]
+{
+    font-size:1rem;
+}
 // like buttons
 .opinion {
   display: inline-block;

@@ -171,6 +171,63 @@ body {
   word-break: break-word;
 }
 
+.container_login {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  min-height: 100vh;
+}
+.container_login_screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.container_login_screen label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+.container_login_screen span {
+  margin-right: 0.5rem;
+}
+.container_login_input {
+  border: transparent;
+  background: transparent;
+  color: white;
+  border-radius: 0.1rem;
+  margin: 0.5rem;
+  width: 10rem;
+  padding: 1rem;
+  box-shadow: rgba(255, 255, 255, 0.568) 0px 5px 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.container_login_submit {
+  border: transparent;
+  background: transparent;
+  color: white;
+  border-radius: 0.1rem;
+  margin: 0.25rem;
+  font-size: 1rem;
+  width: 4rem;
+  height: auto;
+  box-shadow: rgba(53, 53, 53, 0.8) 0px 5px 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input[type=text] {
+  font-size: 1rem;
+}
+
+input[type=password] {
+  font-size: 1rem;
+}
+
 .opinion {
   display: inline-block;
   margin-right: 10px; /* Adjust the margin as needed */

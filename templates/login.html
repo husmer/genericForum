@@ -7,46 +7,50 @@
     <title>Forum</title>
   </head>
   <body>
-    <div class="container">
-      <div class="container_menu">
-        <a class="container_menu_button" href="/">
-          <span>Forum</span>
-        </a>
-        {{if eq .Access.AccessRight "1" }}
-        <a class="container_menu_button" href="/login">
-          <span>Login</span>
-        </a>
-        <a class="container_menu_button" href="/register">
-          <span>Register</span>
-        </a>
-        {{else if eq .Access.AccessRight "2"}}
-        <a class="container_menu_button" href="/logout">
-          <span>Logout</span>
-        </a>
+    <div class="container_login">
+        <div class="container_menu">
+          <a class="container_menu_button" href="/">
+            <span>Forum</span>
+          </a>
+          {{if eq .Access.AccessRight "1" }}
+          <a class="container_menu_button" href="/login">
+            <span>Login</span>
+          </a>
+          <a class="container_menu_button" href="/register">
+            <span>Register</span>
+          </a>
+          {{else if eq .Access.AccessRight "2"}}
+          <a class="container_menu_button" href="/logout">
+            <span>Logout</span>
+          </a>
 
-        <a class="container_menu_button" href="/post">
-          <span>Create Post</span>
-        </a>
-        {{end}}
-        <span class="container_menu_button"> {{.User.Username}} </span>
-      </div>
-      <p class="container_login-title">Please login!</p>
-      <form method="post" action="/login" class="container_login">
-        <label for="username">
-          <span>Username</span>
-          <input type="text" name="username" id="username" />
-        </label>
-        <label for="password">
-          <span>Password</span>
-          <input type="password" name="password" id="password" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-      <div class="container_errors">
-        {{if .Errors}} {{range $err := .Errors}}
-        <p>{{$err}}</p>
-        {{end}} {{end}}
-      </div>
+          <a class="container_menu_button" href="/post">
+            <span>Create Post</span>
+          </a>
+          {{end}}
+          <span class="container_menu_button"> {{.User.Username}} </span>
+          
+        </div>
+
+        <form method="post" action="/login" class="container_login_screen">
+          <p class="container_login-title">Please login!</p>
+          <label for="username">
+            <span>Username:</span>
+            <input class="container_login_input" type="text" name="username" id="username" />
+          </label>
+          <label for="password">
+            <span>Password:</span>
+            <input class="container_login_input" type="password" name="password" id="password" />
+          </label>
+          <input class="container_login_submit" type="submit" value="Submit" />
+
+        </form>
+
+        <div class="container_errors">
+          {{if .Errors}} {{range $err := .Errors}}
+          <p>{{$err}}</p>
+          {{end}} {{end}}
+        </div>
     </div>
   </body>
 </html>

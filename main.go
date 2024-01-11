@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"forum/database"
-	"forum/urlHandlers"
-	"forum/validateData"
+	"genericforum/database"
+	"genericforum/urlHandlers"
+	"genericforum/validateData"
 
 	_ "github.com/mattn/go-sqlite3"
 )
